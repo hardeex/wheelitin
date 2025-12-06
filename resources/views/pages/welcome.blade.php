@@ -9,7 +9,7 @@
 <x-faq />
 <x-cta-section />
 <x-testimonial />
-{{-- <x-footer /> --}}
+<x-footer />
 
 
 @endsection

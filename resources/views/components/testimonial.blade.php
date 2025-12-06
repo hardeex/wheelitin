@@ -21,7 +21,7 @@
         </div>
 
         <!-- Right Side - Testimonials Carousel -->
-        <div class="flex-1 py-8 min-w-0 overflow-hidden">
+        <div class="flex-1 py-8 min-w-0 overflow-hidden max-w-[600px] sm:max-w-[680px] md:max-w-[740px] lg:max-w-[800px] ml-auto">
             <div class="flex flex-col">
                 <!-- Testimonials Container -->
                 <div class="testimonials-wrapper overflow-hidden pr-0">
@@ -108,7 +108,7 @@
                 <div class="relative mt-6 pr-4 md:pr-6 lg:pr-8">
                     <div class="navigation-controls flex items-center">
                         <button onclick="previousTestimonial()" class="w-12 h-12 md:w-14 md:h-14 bg-[var(--color-sun)] rounded-full flex items-center justify-center hover:bg-[var(--color-orange)] transition-colors shadow-lg flex-shrink-0 z-10">
-                            <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
                             </svg>
                         </button>
@@ -117,7 +117,7 @@
                         <div class="h-0.5 bg-gray-400 flex-1"></div>
                         
                         <button onclick="nextTestimonial()" class="w-12 h-12 md:w-14 md:h-14 bg-[var(--color-sun)] rounded-full flex items-center justify-center hover:bg-[var(--color-orange)] transition-colors shadow-lg flex-shrink-0 z-10">
-                            <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
                             </svg>
                         </button>
