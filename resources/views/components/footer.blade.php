@@ -24,7 +24,7 @@
                     <a href="{{route('index')}}" class="text-[16px] hover:text-[var(--color-orange)] transition-colors">Home</a>
                     <a href="{{route('about')}}" class="text-[16px] hover:text-[var(--color-orange)] transition-colors">About</a>
                     <a href="{{route('service')}}" class="text-[16px] hover:text-[var(--color-orange)] transition-colors">Services</a>
-                    <a href="{{route('contact')}}" class="text-[16px] hover:text-[var(--color-orange)] transition-colors">Contact Us</a>
+                    <a href="{{route('index')}}" class="text-[16px] hover:text-[var(--color-orange)] transition-colors">Contact Us</a>
                 </nav>
 
                 <!-- Social Media - thicker circles -->
@@ -58,10 +58,20 @@
         <div class="border-t border-gray-600 mb-8"></div>
 
         <!-- Large Watermark Text -->
-        <div class="text-center">
+        {{-- <div class="text-center">
             <h2 class="font-display text-[80px] md:text-[120px] lg:text-[160px] uppercase leading-none opacity-10">
                 WHEELITIN
             </h2>
+        </div> --}}
+
+         <!-- Large Background Logo -->
+        <div class="relative flex justify-center items-center py-8">
+            <img src="/images/logo.png" 
+                 alt="Wheel It In" 
+                 class="w-[300px] sm:w-[400px] md:w-[700px] lg:w-[900px] xl:w-[1000px] h-auto select-none pointer-events-none"
+                 style="opacity: 0.15; filter: brightness(1.5) contrast(0.8);">
         </div>
     </div>
-</footer>
+
+    
+</footer> 
