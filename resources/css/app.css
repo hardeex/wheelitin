@@ -1,0 +1,79 @@
+/* Font Face Declarations - ResotYG */
+/* @font-face {
+  font-family: 'ResotYG';
+  src: url('/fonts/resotyg/ResotYgPERSONALUSE.woff') format('woff'),
+       url('/fonts/resotyg/ResotYgPERSONALUSE.ttf') format('truetype'),
+       url('/fonts/resotyg/ResotYgPERSONALUSE.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+} */
+
+
+@font-face {
+  font-family: 'ResotYG';
+  src: url('/resources/fonts/resotyg/ResotYgPERSONALUSE.woff') format('woff'),
+       url('/resources/fonts/resotyg/ResotYgPERSONALUSE.ttf') format('truetype'),
+       url('/resources/fonts/resotyg/ResotYgPERSONALUSE.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@import 'tailwindcss';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@theme {
+/* Typography
+       ----------------------------------------
+       Headers/Titles: ResotYG
+       Our brand uses ResotYG as the primary font for its bold, 
+       playful personality—ideal for headlines and logos.
+       Secondary: Poppins
+       It's paired with Poppins as the secondary font for its clean, 
+       modern readability, creating a balanced and versatile 
+       typographic system.
+       ---------------------------------------- */
+--font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+'Segoe UI Symbol', 'Noto Color Emoji';
+--font-display: 'ResotYG', 'Poppins', ui-sans-serif, system-ui, sans-serif;
+/* Brand Colors
+       ----------------------------------------
+       Baby Blue: #8ECAE6
+       Sky Blue: #219EBC
+       Dark Blue: #023047
+       Orange: #FFB703
+       Sun: #FB8500
+       Background: #FFFAEE
+       ---------------------------------------- */
+--color-baby-blue: #8ECAE6;
+--color-sky-blue: #219EBC;
+--color-dark-blue: #023047;
+--color-orange: #FFB703;
+--color-sun: #FB8500;
+--color-background: #FFFAEE;
+/* Gradients
+       ----------------------------------------
+       Hero gradient: Orange (8%) -> Baby Blue -> Sky Sky
+       ---------------------------------------- */
+--gradient-hero: linear-gradient(180deg, #FFB703 8%, #8ECAE6 50%, #219EBC 100%);
+/* Tailwind mappings */
+--color-primary: var(--color-sky-blue);
+--color-secondary: var(--color-orange);
+--color-accent: var(--color-sun);
+/* Imagery Style
+       ----------------------------------------
+       Our style is minimal and authentic—featuring real moments, 
+       natural light, and creators in action. Avoid overly posed 
+       shots or heavy edits.
+       Keywords:
+       - Fun
+       - Playful
+       - Convenient
+       - Cheeky
+       - Culturally relevant
+       ---------------------------------------- */
+}
