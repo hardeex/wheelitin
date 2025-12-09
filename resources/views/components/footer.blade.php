@@ -24,7 +24,7 @@
                     <a href="{{route('index')}}" class="text-[16px] hover:text-[var(--color-orange)] transition-colors">Home</a>
                     <a href="{{route('about')}}" class="text-[16px] hover:text-[var(--color-orange)] transition-colors">About</a>
                     <a href="{{route('service')}}" class="text-[16px] hover:text-[var(--color-orange)] transition-colors">Services</a>
-                    <a href="{{route('index')}}" class="text-[16px] hover:text-[var(--color-orange)] transition-colors">Contact Us</a>
+                    <a href="{{route('contact')}}" class="text-[16px] hover:text-[var(--color-orange)] transition-colors">Contact Us</a>
                 </nav>
 
                 <!-- Social Media - thicker circles -->
