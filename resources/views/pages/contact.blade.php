@@ -15,7 +15,7 @@
                     <!-- Icon -->
                     <div class="w-12 h-12 mb-4">
                         <img 
-                            src="/images/location-icon.gif" 
+                            src="/images/location.png" 
                             alt="Location" 
                             class="w-full h-full object-contain"
                         />
@@ -37,7 +37,7 @@
                     <!-- Icon -->
                     <div class="w-12 h-12 mb-4">
                         <img 
-                            src="/images/phone-icon.gif" 
+                            src="/images/phone.png" 
                             alt="Phone" 
                             class="w-full h-full object-contain"
                         />
@@ -60,7 +60,7 @@
                     <!-- Icon -->
                     <div class="w-12 h-12 mb-4">
                         <img 
-                            src="/images/email-icon.gif" 
+                            src="/images/email.png" 
                             alt="Email" 
                             class="w-full h-full object-contain"
                         />
