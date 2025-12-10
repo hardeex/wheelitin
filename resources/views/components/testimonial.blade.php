@@ -516,17 +516,19 @@ function getGap() {
 }
 
 function updateCarousel(animate = true) {
-    const track = document.querySelector('.testimonials-track');
+    const tracks = document.querySelectorAll('.testimonials-track');
     const cardWidth = getCardWidth();
     const gap = getGap();
     
-    if (!animate) {
-        track.style.transition = 'none';
-    } else {
-        track.style.transition = 'transform 0.5s ease-in-out';
-    }
-    
-    track.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
+    tracks.forEach(track => {
+        if (!animate) {
+            track.style.transition = 'none';
+        } else {
+            track.style.transition = 'transform 0.5s ease-in-out';
+        }
+        
+        track.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
+    });
 }
 
 function nextTestimonial() {
