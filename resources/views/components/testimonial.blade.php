@@ -224,136 +224,253 @@ updateCarousel(false);
 
 
 <!-- testimonials-section.blade.php -->
-<section class="py-12 md:py-16 lg:py-20 overflow-hidden">
-    <div class="max-w-full mx-auto flex flex-col lg:flex-row">
-        <!-- Left Side - Vertical "TESTIMONIALS" Text -->
-        <div class="hidden lg:flex flex-shrink-0 relative pl-8">
-            <div class="h-full flex items-center">
-                <h3 class="font-display text-[90px] uppercase tracking-wider rotate-180 whitespace-nowrap" style="writing-mode: vertical-rl; color: #1E1E1E17;">
-                    TESTIMONIALS
-                </h3>
+<section class="py-12 md:py-16 lg:py-20 overflow-hidden bg-[#F5F5F5] lg:bg-transparent">
+    <div class="max-w-full mx-auto">
+        <!-- Mobile Layout (< lg) -->
+        <div class="lg:hidden">
+            <!-- Header Section -->
+            <div class="px-4 sm:px-6 mb-8">
+                <h2 class="font-display text-[24px] sm:text-[28px] text-[var(--color-dark-blue)] mb-3 leading-tight uppercase text-center">
+                    What our client<br>say about us
+                </h2>
+                <p class="text-gray-700 text-[14px] sm:text-[15px] leading-relaxed text-center max-w-md mx-auto">
+                    Wheelitin is revolutionizing the auto repair industry by creating a transparent.
+                </p>
             </div>
-        </div>
 
-        <!-- Middle - Main Heading -->
-        <div class="flex-shrink-0 px-4 sm:px-6 md:px-8 lg:px-12 py-4 md:py-6 lg:py-8 flex flex-col justify-center w-full lg:w-auto lg:max-w-md">
-            <h2 class="font-display text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] text-[var(--color-dark-blue)] mb-3 md:mb-4 lg:mb-6 leading-tight">
-                What our<br>client say<br>about us
-            </h2>
-            <p class="text-gray-700 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] leading-relaxed">
-                Wheelitin is revolutionizing the auto repair industry by creating a transparent.
-            </p>
-        </div>
+            <!-- Testimonials with Vertical Text -->
+            <div class="flex items-start">
+                <!-- Vertical TESTIMONIALS text -->
+                <div class="flex-shrink-0 pl-2 pr-1">
+                    <h3 class="font-display text-[40px] sm:text-[50px] uppercase tracking-wider rotate-180 whitespace-nowrap" style="writing-mode: vertical-rl; color: #1E1E1E17;">
+                        TESTIMONIALS
+                    </h3>
+                </div>
 
-        <!-- Right Side - Testimonials Carousel -->
-        <div class="flex-1 py-4 md:py-6 lg:py-8 min-w-0 overflow-hidden w-full lg:max-w-[800px] lg:ml-auto">
-            <div class="flex flex-col">
-                <!-- Testimonials Container -->
-                <div class="testimonials-wrapper overflow-hidden px-4 sm:px-6 md:px-8 lg:pr-8 lg:pl-0">
-                    <div class="testimonials-track flex gap-3 sm:gap-4 md:gap-6 transition-transform duration-500 ease-in-out">
-                        <!-- Testimonial Card 1 -->
-                        <div class="testimonial-card flex-shrink-0 w-[260px] sm:w-[280px] md:w-[320px] lg:w-[360px]">
-                            <div class="bg-white rounded-[12px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden shadow-lg border-[3px] sm:border-4 md:border-[6px] border-[var(--color-sky-blue)]">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=400&fit=crop" 
-                                    alt="Jane Alfred" 
-                                    class="w-full h-[180px] sm:h-[200px] md:h-[220px] lg:h-[240px] object-cover"
-                                />
-                                <div class="px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-5 bg-white">
-                                    <h4 class="font-display text-[16px] sm:text-[18px] md:text-[22px] text-[var(--color-dark-blue)] mb-1 sm:mb-2 uppercase">
-                                        Jane Alfred
-                                    </h4>
-                                    <p class="text-gray-600 text-[13px] sm:text-[14px] md:text-[15px] leading-relaxed">
-                                        Wheelitin is revolutionizing the auto repair industry by creating a transparent.
-                                    </p>
+                <!-- Carousel -->
+                <div class="flex-1 min-w-0">
+                    <div class="testimonials-wrapper overflow-hidden pr-4">
+                        <div class="testimonials-track flex gap-3 sm:gap-4 transition-transform duration-500 ease-in-out">
+                            <!-- Testimonial Card 1 -->
+                            <div class="testimonial-card flex-shrink-0 w-[240px] sm:w-[260px]">
+                                <div class="bg-white rounded-[16px] overflow-hidden shadow-lg border-4 border-[var(--color-sky-blue)]">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=400&fit=crop" 
+                                        alt="Jane Alfred" 
+                                        class="w-full h-[200px] sm:h-[220px] object-cover"
+                                    />
+                                    <div class="px-4 py-4 bg-white">
+                                        <h4 class="font-display text-[16px] sm:text-[18px] text-[var(--color-dark-blue)] mb-2 uppercase">
+                                            Jane Alfred
+                                        </h4>
+                                        <p class="text-gray-600 text-[13px] sm:text-[14px] leading-relaxed">
+                                            Wheelitin is revolutionizing the auto repair industry by creating a transparent.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial Card 2 -->
+                            <div class="testimonial-card flex-shrink-0 w-[240px] sm:w-[260px]">
+                                <div class="bg-white rounded-[16px] overflow-hidden shadow-lg border-4 border-[var(--color-sun)]">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=400&fit=crop" 
+                                        alt="Sarah Johnson" 
+                                        class="w-full h-[200px] sm:h-[220px] object-cover"
+                                    />
+                                    <div class="px-4 py-4 bg-white">
+                                        <h4 class="font-display text-[16px] sm:text-[18px] text-[var(--color-dark-blue)] mb-2 uppercase">
+                                            Sarah Johnson
+                                        </h4>
+                                        <p class="text-gray-600 text-[13px] sm:text-[14px] leading-relaxed">
+                                            Wheelitin is revolutionizing the auto repair industry by creating a transparent.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial Card 3 -->
+                            <div class="testimonial-card flex-shrink-0 w-[240px] sm:w-[260px]">
+                                <div class="bg-white rounded-[16px] overflow-hidden shadow-lg border-4 border-[var(--color-sky-blue)]">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=400&fit=crop" 
+                                        alt="Mike Roberts" 
+                                        class="w-full h-[200px] sm:h-[220px] object-cover"
+                                    />
+                                    <div class="px-4 py-4 bg-white">
+                                        <h4 class="font-display text-[16px] sm:text-[18px] text-[var(--color-dark-blue)] mb-2 uppercase">
+                                            Mike Roberts
+                                        </h4>
+                                        <p class="text-gray-600 text-[13px] sm:text-[14px] leading-relaxed">
+                                            Wheelitin is revolutionizing the auto repair industry by creating a transparent.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial Card 4 -->
+                            <div class="testimonial-card flex-shrink-0 w-[240px] sm:w-[260px]">
+                                <div class="bg-white rounded-[16px] overflow-hidden shadow-lg border-4 border-[var(--color-sun)]">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=400&fit=crop" 
+                                        alt="Emma Wilson" 
+                                        class="w-full h-[200px] sm:h-[220px] object-cover"
+                                    />
+                                    <div class="px-4 py-4 bg-white">
+                                        <h4 class="font-display text-[16px] sm:text-[18px] text-[var(--color-dark-blue)] mb-2 uppercase">
+                                            Emma Wilson
+                                        </h4>
+                                        <p class="text-gray-600 text-[13px] sm:text-[14px] leading-relaxed">
+                                            Wheelitin is revolutionizing the auto repair industry by creating a transparent.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Testimonial Card 2 -->
-                        <div class="testimonial-card flex-shrink-0 w-[260px] sm:w-[280px] md:w-[320px] lg:w-[360px]">
-                            <div class="bg-white rounded-[12px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden shadow-lg border-[3px] sm:border-4 md:border-[6px] border-[var(--color-sun)]">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=400&fit=crop" 
-                                    alt="Sarah Johnson" 
-                                    class="w-full h-[180px] sm:h-[200px] md:h-[220px] lg:h-[240px] object-cover"
-                                />
-                                <div class="px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-5 bg-white">
-                                    <h4 class="font-display text-[16px] sm:text-[18px] md:text-[22px] text-[var(--color-dark-blue)] mb-1 sm:mb-2 uppercase">
-                                        Sarah Johnson
-                                    </h4>
-                                    <p class="text-gray-600 text-[13px] sm:text-[14px] md:text-[15px] leading-relaxed">
-                                        Wheelitin is revolutionizing the auto repair industry by creating a transparent.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial Card 3 -->
-                        <div class="testimonial-card flex-shrink-0 w-[260px] sm:w-[280px] md:w-[320px] lg:w-[360px]">
-                            <div class="bg-white rounded-[12px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden shadow-lg border-[3px] sm:border-4 md:border-[6px] border-[var(--color-sky-blue)]">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=400&fit=crop" 
-                                    alt="Mike Roberts" 
-                                    class="w-full h-[180px] sm:h-[200px] md:h-[220px] lg:h-[240px] object-cover"
-                                />
-                                <div class="px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-5 bg-white">
-                                    <h4 class="font-display text-[16px] sm:text-[18px] md:text-[22px] text-[var(--color-dark-blue)] mb-1 sm:mb-2 uppercase">
-                                        Mike Roberts
-                                    </h4>
-                                    <p class="text-gray-600 text-[13px] sm:text-[14px] md:text-[15px] leading-relaxed">
-                                        Wheelitin is revolutionizing the auto repair industry by creating a transparent.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial Card 4 -->
-                        <div class="testimonial-card flex-shrink-0 w-[260px] sm:w-[280px] md:w-[320px] lg:w-[360px]">
-                            <div class="bg-white rounded-[12px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden shadow-lg border-[3px] sm:border-4 md:border-[6px] border-[var(--color-sun)]">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=400&fit=crop" 
-                                    alt="Emma Wilson" 
-                                    class="w-full h-[180px] sm:h-[200px] md:h-[220px] lg:h-[240px] object-cover"
-                                />
-                                <div class="px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-5 bg-white">
-                                    <h4 class="font-display text-[16px] sm:text-[18px] md:text-[22px] text-[var(--color-dark-blue)] mb-1 sm:mb-2 uppercase">
-                                        Emma Wilson
-                                    </h4>
-                                    <p class="text-gray-600 text-[13px] sm:text-[14px] md:text-[15px] leading-relaxed">
-                                        Wheelitin is revolutionizing the auto repair industry by creating a transparent.
-                                    </p>
-                                </div>
-                            </div>
+                    <!-- Navigation Buttons -->
+                    <div class="mt-6 pr-4">
+                        <div class="flex items-center justify-center gap-4">
+                            <button onclick="previousTestimonial()" class="w-12 h-12 sm:w-14 sm:h-14 bg-[var(--color-sun)] rounded-full flex items-center justify-center hover:bg-[var(--color-orange)] transition-colors shadow-lg active:scale-95">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </button>
+                            
+                            <button onclick="nextTestimonial()" class="w-12 h-12 sm:w-14 sm:h-14 bg-[var(--color-sun)] rounded-full flex items-center justify-center hover:bg-[var(--color-orange)] transition-colors shadow-lg active:scale-95">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Navigation Buttons -->
-                <div class="relative mt-4 md:mt-6 px-4 sm:px-6 md:px-8 lg:pr-8 lg:pl-0">
-                    <div class="navigation-controls flex items-center">
-                        <button onclick="previousTestimonial()" class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[var(--color-sun)] rounded-full flex items-center justify-center hover:bg-[var(--color-orange)] transition-colors shadow-lg flex-shrink-0 z-10 active:scale-95">
-                            <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
-                            </svg>
-                        </button>
-                        
-                        <!-- Line between buttons -->
-                        <div class="h-0.5 bg-gray-300 flex-1 mx-2"></div>
-                        
-                        <button onclick="nextTestimonial()" class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[var(--color-sun)] rounded-full flex items-center justify-center hover:bg-[var(--color-orange)] transition-colors shadow-lg flex-shrink-0 z-10 active:scale-95">
-                            <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
-                            </svg>
-                        </button>
+        <!-- Desktop Layout (lg+) -->
+        <div class="hidden lg:flex">
+            <!-- Left Side - Vertical "TESTIMONIALS" Text -->
+            <div class="flex-shrink-0 relative pl-8">
+                <div class="h-full flex items-center">
+                    <h3 class="font-display text-[90px] uppercase tracking-wider rotate-180 whitespace-nowrap" style="writing-mode: vertical-rl; color: #1E1E1E17;">
+                        TESTIMONIALS
+                    </h3>
+                </div>
+            </div>
+
+            <!-- Middle - Main Heading -->
+            <div class="flex-shrink-0 px-12 py-8 flex flex-col justify-center w-auto max-w-md">
+                <h2 class="font-display text-[48px] text-[var(--color-dark-blue)] mb-6 leading-tight uppercase">
+                    What our<br>client say<br>about us
+                </h2>
+                <p class="text-gray-700 text-[18px] leading-relaxed">
+                    Wheelitin is revolutionizing the auto repair industry by creating a transparent.
+                </p>
+            </div>
+
+            <!-- Right Side - Testimonials Carousel -->
+            <div class="flex-1 py-8 min-w-0 overflow-hidden max-w-[800px] ml-auto">
+                <div class="flex flex-col">
+                    <!-- Testimonials Container -->
+                    <div class="testimonials-wrapper overflow-hidden pr-8">
+                        <div class="testimonials-track flex gap-6 transition-transform duration-500 ease-in-out">
+                            <!-- Testimonial Card 1 -->
+                            <div class="testimonial-card flex-shrink-0 w-[360px]">
+                                <div class="bg-white rounded-[20px] overflow-hidden shadow-lg border-[6px] border-[var(--color-sky-blue)]">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=400&fit=crop" 
+                                        alt="Jane Alfred" 
+                                        class="w-full h-[240px] object-cover"
+                                    />
+                                    <div class="px-6 py-5 bg-white">
+                                        <h4 class="font-display text-[22px] text-[var(--color-dark-blue)] mb-2 uppercase">
+                                            Jane Alfred
+                                        </h4>
+                                        <p class="text-gray-600 text-[15px] leading-relaxed">
+                                            Wheelitin is revolutionizing the auto repair industry by creating a transparent.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial Card 2 -->
+                            <div class="testimonial-card flex-shrink-0 w-[360px]">
+                                <div class="bg-white rounded-[20px] overflow-hidden shadow-lg border-[6px] border-[var(--color-sun)]">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=400&fit=crop" 
+                                        alt="Sarah Johnson" 
+                                        class="w-full h-[240px] object-cover"
+                                    />
+                                    <div class="px-6 py-5 bg-white">
+                                        <h4 class="font-display text-[22px] text-[var(--color-dark-blue)] mb-2 uppercase">
+                                            Sarah Johnson
+                                        </h4>
+                                        <p class="text-gray-600 text-[15px] leading-relaxed">
+                                            Wheelitin is revolutionizing the auto repair industry by creating a transparent.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial Card 3 -->
+                            <div class="testimonial-card flex-shrink-0 w-[360px]">
+                                <div class="bg-white rounded-[20px] overflow-hidden shadow-lg border-[6px] border-[var(--color-sky-blue)]">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=400&fit=crop" 
+                                        alt="Mike Roberts" 
+                                        class="w-full h-[240px] object-cover"
+                                    />
+                                    <div class="px-6 py-5 bg-white">
+                                        <h4 class="font-display text-[22px] text-[var(--color-dark-blue)] mb-2 uppercase">
+                                            Mike Roberts
+                                        </h4>
+                                        <p class="text-gray-600 text-[15px] leading-relaxed">
+                                            Wheelitin is revolutionizing the auto repair industry by creating a transparent.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial Card 4 -->
+                            <div class="testimonial-card flex-shrink-0 w-[360px]">
+                                <div class="bg-white rounded-[20px] overflow-hidden shadow-lg border-[6px] border-[var(--color-sun)]">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=400&fit=crop" 
+                                        alt="Emma Wilson" 
+                                        class="w-full h-[240px] object-cover"
+                                    />
+                                    <div class="px-6 py-5 bg-white">
+                                        <h4 class="font-display text-[22px] text-[var(--color-dark-blue)] mb-2 uppercase">
+                                            Emma Wilson
+                                        </h4>
+                                        <p class="text-gray-600 text-[15px] leading-relaxed">
+                                            Wheelitin is revolutionizing the auto repair industry by creating a transparent.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <!-- Dots Indicator (Mobile Only) -->
-                    <div class="flex justify-center gap-2 mt-4 md:hidden">
-                        <span class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="0"></span>
-                        <span class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="1"></span>
-                        <span class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="2"></span>
-                        <span class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="3"></span>
+
+                    <!-- Navigation Buttons -->
+                    <div class="relative mt-6 pr-8">
+                        <div class="navigation-controls flex items-center">
+                            <button onclick="previousTestimonial()" class="w-14 h-14 bg-[var(--color-sun)] rounded-full flex items-center justify-center hover:bg-[var(--color-orange)] transition-colors shadow-lg flex-shrink-0 z-10">
+                                <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </button>
+                            
+                            <div class="h-0.5 bg-gray-400 flex-1"></div>
+                            
+                            <button onclick="nextTestimonial()" class="w-14 h-14 bg-[var(--color-sun)] rounded-full flex items-center justify-center hover:bg-[var(--color-orange)] transition-colors shadow-lg flex-shrink-0 z-10">
+                                <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -363,32 +480,9 @@ updateCarousel(false);
 
 <style>
 .navigation-controls {
-    width: 100%;
-    max-width: 500px;
+    width: calc(100% - 180px);
     margin: 0 auto;
-}
-
-@media (min-width: 640px) {
-    .navigation-controls {
-        max-width: 560px;
-    }
-}
-
-@media (min-width: 768px) {
-    .navigation-controls {
-        max-width: 640px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .navigation-controls {
-        max-width: 720px;
-    }
-}
-
-.dot.active {
-    background-color: var(--color-dark-blue);
-    width: 1.5rem;
+    max-width: 800px;
 }
 
 /* Touch-friendly improvements */
@@ -416,7 +510,7 @@ function getCardWidth() {
 }
 
 function getGap() {
-    if (window.innerWidth >= 768) return 24;
+    if (window.innerWidth >= 1024) return 24;
     if (window.innerWidth >= 640) return 16;
     return 12;
 }
@@ -433,20 +527,6 @@ function updateCarousel(animate = true) {
     }
     
     track.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
-    
-    // Update dots
-    updateDots();
-}
-
-function updateDots() {
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot, index) => {
-        if (index === currentIndex) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
-        }
-    });
 }
 
 function nextTestimonial() {
@@ -470,86 +550,88 @@ function previousTestimonial() {
 }
 
 // Touch/Swipe Support
-const track = document.querySelector('.testimonials-track');
+const tracks = document.querySelectorAll('.testimonials-track');
 
-track.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-    track.style.transition = 'none';
-});
+tracks.forEach(track => {
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        track.style.transition = 'none';
+    });
 
-track.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    currentX = e.touches[0].clientX;
-    const diff = currentX - startX;
-    const cardWidth = getCardWidth();
-    const gap = getGap();
-    const currentOffset = -currentIndex * (cardWidth + gap);
-    track.style.transform = `translateX(${currentOffset + diff}px)`;
-});
+    track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+        const diff = currentX - startX;
+        const cardWidth = getCardWidth();
+        const gap = getGap();
+        const currentOffset = -currentIndex * (cardWidth + gap);
+        track.style.transform = `translateX(${currentOffset + diff}px)`;
+    });
 
-track.addEventListener('touchend', (e) => {
-    if (!isDragging) return;
-    isDragging = false;
-    
-    const diff = currentX - startX;
-    const threshold = 50; // Minimum swipe distance
-    
-    if (Math.abs(diff) > threshold) {
-        if (diff > 0) {
-            previousTestimonial();
+    track.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const diff = currentX - startX;
+        const threshold = 50;
+        
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                previousTestimonial();
+            } else {
+                nextTestimonial();
+            }
         } else {
-            nextTestimonial();
+            updateCarousel(true);
         }
-    } else {
-        updateCarousel(true);
-    }
-});
+    });
 
-// Mouse drag support for desktop
-track.addEventListener('mousedown', (e) => {
-    startX = e.clientX;
-    isDragging = true;
-    track.style.cursor = 'grabbing';
-    track.style.transition = 'none';
-});
+    // Mouse drag support for desktop
+    track.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        isDragging = true;
+        track.style.cursor = 'grabbing';
+        track.style.transition = 'none';
+    });
 
-track.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    currentX = e.clientX;
-    const diff = currentX - startX;
-    const cardWidth = getCardWidth();
-    const gap = getGap();
-    const currentOffset = -currentIndex * (cardWidth + gap);
-    track.style.transform = `translateX(${currentOffset + diff}px)`;
-});
+    track.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        currentX = e.clientX;
+        const diff = currentX - startX;
+        const cardWidth = getCardWidth();
+        const gap = getGap();
+        const currentOffset = -currentIndex * (cardWidth + gap);
+        track.style.transform = `translateX(${currentOffset + diff}px)`;
+    });
 
-track.addEventListener('mouseup', (e) => {
-    if (!isDragging) return;
-    isDragging = false;
-    track.style.cursor = 'grab';
-    
-    const diff = currentX - startX;
-    const threshold = 50;
-    
-    if (Math.abs(diff) > threshold) {
-        if (diff > 0) {
-            previousTestimonial();
-        } else {
-            nextTestimonial();
-        }
-    } else {
-        updateCarousel(true);
-    }
-});
-
-track.addEventListener('mouseleave', () => {
-    if (isDragging) {
+    track.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
         isDragging = false;
         track.style.cursor = 'grab';
-        updateCarousel(true);
-    }
+        
+        const diff = currentX - startX;
+        const threshold = 50;
+        
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                previousTestimonial();
+            } else {
+                nextTestimonial();
+            }
+        } else {
+            updateCarousel(true);
+        }
+    });
+
+    track.addEventListener('mouseleave', () => {
+        if (isDragging) {
+            isDragging = false;
+            track.style.cursor = 'grab';
+            updateCarousel(true);
+        }
+    });
 });
 
 // Adjust on window resize
