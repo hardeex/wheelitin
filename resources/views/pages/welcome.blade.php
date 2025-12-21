@@ -8,7 +8,7 @@
 <x-how-it-works />
 <x-faq />
 <x-cta-section />
-<x-testimonial />
+{{-- <x-testimonial /> --}}
 <x-footer />
 
 

@@ -28,4 +28,30 @@ class PagesController extends Controller
     {
         return view('pages.contact');
     }
+
+    public function joinWaitList()
+    {
+        return view('pages.join-waitlist');
+    }
+
+    public function help()
+    {
+        return view('pages.help');
+    }
+
+
+    public function terms()
+    {
+        return view('pages.terms');
+    }
+
+    public function privacy()
+    {
+        return view('pages.privacy');
+    }
+
+    public function cookies()
+    {
+        return view('pages.cookies');
+    }
 }
