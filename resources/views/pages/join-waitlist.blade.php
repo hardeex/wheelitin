@@ -173,6 +173,8 @@
                             </p>
                         </div>
 
+
+                        @include('feedback')
                         <!-- Form -->
                         <form id="waitlistForm" class="space-y-5" method="POST" action="#">
                             @csrf
@@ -182,7 +184,7 @@
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">I am a <span class="text-red-500">*</span></label>
                                 <div class="grid grid-cols-2 gap-3">
                                     <label class="relative flex items-center justify-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all hover:border-[var(--color-sky-blue)] has-[:checked]:border-[var(--color-sky-blue)] has-[:checked]:bg-[var(--color-baby-blue)]/20 group">
-                                        <input type="radio" name="user_type" value="car_owner" class="sr-only peer" required>
+                                        <input type="radio" name="userType" value="user" class="sr-only peer" required>
                                         <div class="text-center">
                                             <svg class="w-8 h-8 mx-auto mb-2 text-gray-400 group-has-[:checked]:text-[var(--color-sky-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -191,7 +193,7 @@
                                         </div>
                                     </label>
                                     <label class="relative flex items-center justify-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all hover:border-[var(--color-sky-blue)] has-[:checked]:border-[var(--color-sky-blue)] has-[:checked]:bg-[var(--color-baby-blue)]/20 group">
-                                        <input type="radio" name="user_type" value="mechanic" class="sr-only peer" required>
+                                        <input type="radio" name="userType" value="mechanic" class="sr-only peer" required>
                                         <div class="text-center">
                                             <svg class="w-8 h-8 mx-auto mb-2 text-gray-400 group-has-[:checked]:text-[var(--color-sky-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -203,8 +205,27 @@
                                 </div>
                             </div>
 
-                            <!-- Name Input -->
+                            <!-- Full-Name Input -->
                             <div class="relative">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                        </svg>
+                                    </span>
+                                    <input 
+                                        type="text" 
+                                        name="firstName"
+                                        placeholder="John Doe" 
+                                        class="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[var(--color-sky-blue)] focus:outline-none transition-all duration-300 hover:border-gray-300"
+                                    />
+                                </div>
+                            </div>
+
+
+                            <!--- Last name input ---->
+                              <div class="relative">
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
@@ -214,7 +235,7 @@
                                     </span>
                                     <input 
                                         type="text" 
-                                        name="full_name"
+                                        name="lastName"
                                         placeholder="John Doe" 
                                         class="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[var(--color-sky-blue)] focus:outline-none transition-all duration-300 hover:border-gray-300"
                                     />
@@ -251,7 +272,7 @@
                                     </span>
                                     <input 
                                         type="tel" 
-                                        name="phone"
+                                        name="phoneNumber"
                                         placeholder="+44 1234 567" 
                                         class="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[var(--color-sky-blue)] focus:outline-none transition-all duration-300 hover:border-gray-300"
                                         required
@@ -370,7 +391,7 @@
 
 <script>
     // Toggle benefits based on user type selection
-    document.querySelectorAll('input[name="user_type"]').forEach(radio => {
+    document.querySelectorAll('input[name="userType"]').forEach(radio => {
         radio.addEventListener('change', function() {
             const ownerBenefits = document.getElementById('ownerBenefits');
             const mechanicBenefits = document.getElementById('mechanicBenefits');
@@ -404,7 +425,7 @@
         const currentCount = parseInt(counter.querySelector('.text-4xl').textContent.replace(',', ''));
         counter.querySelector('.text-4xl').textContent = (currentCount + 1).toLocaleString();
         
-        // Here you would normally send the form data to your backend
+       
         // fetch('/api/waitlist', { method: 'POST', body: new FormData(this) })
     });
 

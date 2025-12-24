@@ -29,16 +29,14 @@ class PagesController extends Controller
         return view('pages.contact');
     }
 
-    public function joinWaitList()
-    {
-        return view('pages.join-waitlist');
-    }
+  
 
     public function help()
     {
         return view('pages.help');
     }
 
+    
 
     public function terms()
     {

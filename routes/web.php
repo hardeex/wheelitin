@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarOwnerController;
 use App\Http\Controllers\CloudinaryController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\JoinWailListControoller;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SearchController;
@@ -17,7 +18,6 @@ Route::get('/', [PagesController::class, 'index'])->name('index');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 // Route::get('/service', [PagesController::class, 'services'])->name('service');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
-Route::get('/join/waitlist', [PagesController::class, 'joinWaitList'])->name('join.waitlist');
 Route::post('/send/waitlist/data', [PagesController::class, 'sendWaitListData'])->name('sendwaitlist.data');
 Route::post('/send/waitlist/data', [PagesController::class, 'sendWaitlistData'])->name('waitlist.store');
 Route::get('/help', [PagesController::class, 'help'])->name('help');
@@ -33,6 +33,13 @@ Route::get('/cookies', [PagesController::class, 'cookies'])->name('cookies');
 Route::get('/search', [SearchController::class, 'searchSpecialists'])->name('search.specialists');
 
 
+/***
+ * 
+ * JOIN WAIT LIST CONTROLLER
+ */
+
+Route::get('/join/waitlist', [JoinWailListControoller::class, 'joinWaitList'])->name('join.waitlist');
+Route::post('/send/waitlist/data', [JoinWailListControoller::class, 'sendJoinWaitiListData'])->name('send.waitlist.data');
 
 
 // ============================================
