@@ -3,7 +3,7 @@
 return [
    //'backend_url' => env('BACKEND_URL', 'https://wheeltin.vercel.app/api'),
 
-   'backend_url' => env('BACKEND_URL', 'https://serviceprovider-backend.taskflow.com.ng/api'),
+   'backend_url' => env('BACKEND_URL', 'http://167.99.81.47:8080/api'),
    //'backend_url' => env('BACKEND_URL', 'https://backend-wheeltin.onrender.com/api'),
 
 
