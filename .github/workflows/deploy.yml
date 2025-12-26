@@ -31,7 +31,7 @@ jobs:
           username: adewale
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /var/www/wheelitin-frontend
+            cd /var/www/wheelitin
             git pull origin main
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
