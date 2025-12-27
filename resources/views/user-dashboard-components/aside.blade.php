@@ -58,7 +58,7 @@
             </a>
 
             <!-- Notifications -->
-            <a href="{{ route('notifications') }}"
+            {{-- <a href="{{ route('notifications') }}"
                 class="flex items-center px-4 py-3 text-sm font-medium rounded-lg group
                 {{ Route::currentRouteName() === 'notifications' ? 'bg-gradient-to-r from-sky-blue to-baby-blue text-white' : 'text-dark-blue hover:bg-baby-blue/10' }}">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@
                 @if(isset($unreadNotifications) && $unreadNotifications > 0)
                 <span class="ml-auto bg-sun text-white text-xs font-bold px-2 py-1 rounded-full">{{ $unreadNotifications }}</span>
                 @endif
-            </a>
+            </a> --}}
         </div>
 
         <!-- My Reports Section -->

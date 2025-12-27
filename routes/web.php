@@ -5,13 +5,32 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarOwnerController;
 use App\Http\Controllers\CloudinaryController;
 use App\Http\Controllers\GuestController;
-use App\Http\Controllers\JoinWailListControoller;
+use App\Http\Controllers\JoinWailListController;
+use App\Http\Controllers\JoinWaitListController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SpecialistController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
+
+
+
+Route::get('test-email', function () {
+    try {
+        Mail::raw(
+            'This is a test email for the Wheelitin project to verify that the mail server is correctly configured.',
+            function ($message) {
+                $message->to('developeradewale8@gmail.com')
+                        ->subject('AliignPSP – Email Configuration Test');
+            }
+        );
+        return response()->json(['message' => 'Test email sent successfully']);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Failed: ' . $e->getMessage()], 500);
+    }
+});
 
 
 Route::get('/', [PagesController::class, 'index'])->name('index');
@@ -38,8 +57,8 @@ Route::get('/search', [SearchController::class, 'searchSpecialists'])->name('sea
  * JOIN WAIT LIST CONTROLLER
  */
 
-Route::get('/join/waitlist', [JoinWailListControoller::class, 'joinWaitList'])->name('join.waitlist');
-Route::post('/send/waitlist/data', [JoinWailListControoller::class, 'sendJoinWaitiListData'])->name('send.waitlist.data');
+Route::get('/join/waitlist', [JoinWaitListController::class, 'joinWaitList'])->name('join.waitlist');
+Route::post('/send/waitlist/data', [JoinWaitListController::class, 'sendJoinWaitListData'])->name('send.waitlist.data');
 
 
 // ============================================

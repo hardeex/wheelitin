@@ -159,6 +159,10 @@
                     <div class="absolute top-0 right-0 w-40 h-40 bg-[var(--color-baby-blue)] rounded-full -mr-20 -mt-20 opacity-50"></div>
                     <div class="absolute bottom-0 left-0 w-32 h-32 bg-[var(--color-sky-blue)] rounded-full -ml-16 -mb-16 opacity-50"></div>
                     
+                        @include('feedback')
+
+
+                        
                     <div class="relative z-10">
                         <!-- Form Header -->
                         <div class="text-center mb-8">
@@ -174,9 +178,8 @@
                         </div>
 
 
-                        @include('feedback')
                         <!-- Form -->
-                        <form id="waitlistForm" class="space-y-5" method="POST" action="#">
+                        <form  class="space-y-5" method="POST" action="{{route('send.waitlist.data')}}">
                             @csrf
                             
                             <!-- User Type Selection -->
@@ -217,7 +220,7 @@
                                     <input 
                                         type="text" 
                                         name="firstName"
-                                        placeholder="John Doe" 
+                                        placeholder="John" 
                                         class="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[var(--color-sky-blue)] focus:outline-none transition-all duration-300 hover:border-gray-300"
                                     />
                                 </div>
@@ -226,7 +229,7 @@
 
                             <!--- Last name input ---->
                               <div class="relative">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -236,7 +239,7 @@
                                     <input 
                                         type="text" 
                                         name="lastName"
-                                        placeholder="John Doe" 
+                                        placeholder="Doe" 
                                         class="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[var(--color-sky-blue)] focus:outline-none transition-all duration-300 hover:border-gray-300"
                                     />
                                 </div>
@@ -280,73 +283,34 @@
                                 </div>
                             </div>
 
-                            <!-- Car Type (Optional - Only for Car Owners) -->
-                            <div class="relative" id="carTypeField" style="display: none;">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Car Type <span class="text-gray-400 text-xs">(Optional)</span></label>
-                                <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                        </svg>
-                                    </span>
-                                    <select name="car_type" class="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[var(--color-sky-blue)] focus:outline-none transition-all duration-300 hover:border-gray-300 appearance-none bg-white">
-                                        <option value="">Select your car type</option>
-                                        <option value="sedan">Sedan</option>
-                                        <option value="suv">SUV</option>
-                                        <option value="truck">Truck</option>
-                                        <option value="van">Van</option>
-                                        <option value="coupe">Coupe</option>
-                                        <option value="hatchback">Hatchback</option>
-                                        <option value="convertible">Convertible</option>
-                                        <option value="wagon">Wagon</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
+                          
 
-                            <!-- Business Name (Optional - Only for Mechanics) -->
-                            <div class="relative" id="businessNameField" style="display: none;">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Business/Workshop Name <span class="text-gray-400 text-xs">(Optional)</span></label>
-                                <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                                        </svg>
-                                    </span>
-                                    <input 
-                                        type="text" 
-                                        name="business_name"
-                                        placeholder="e.g., Joe's Auto Repair" 
-                                        class="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[var(--color-sky-blue)] focus:outline-none transition-all duration-300 hover:border-gray-300"
-                                    />
-                                </div>
-                            </div>
+                           <!-- address -->
+<div class="relative">
+    <label class="block text-sm font-semibold text-gray-700 mb-2">
+        Address <span class="text-gray-400 text-xs">(Optional)</span>
+    </label>
 
-                            <!-- Location (Optional) -->
-                            <div class="relative">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Location <span class="text-gray-400 text-xs">(Optional)</span></label>
-                                <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                    </span>
-                                    <select name="location" class="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[var(--color-sky-blue)] focus:outline-none transition-all duration-300 hover:border-gray-300 appearance-none bg-white">
-                                        <option value="">Select your location</option>
-                                        <option value="lagos">Lagos</option>
-                                        <option value="abuja">Abuja</option>
-                                        <option value="port_harcourt">Port Harcourt</option>
-                                        <option value="ibadan">Ibadan</option>
-                                        <option value="kano">Kano</option>
-                                        <option value="benin">Benin City</option>
-                                        <option value="enugu">Enugu</option>
-                                        <option value="kaduna">Kaduna</option>
-                                        <option value="jos">Jos</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
+    <div class="relative">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+        </span>
+
+        <input
+            type="text"
+            name="address"
+            placeholder="e.g. London, Manchester, Birmingham, SW1A 1AA"
+            class="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl
+                   focus:border-[var(--color-sky-blue)] focus:outline-none
+                   transition-all duration-300 hover:border-gray-300 bg-white"
+        />
+    </div>
+</div>
 
                             <!-- Submit Button -->
                             <button 
@@ -389,54 +353,10 @@
     </div>
 </section>
 
-<script>
-    // Toggle benefits based on user type selection
-    document.querySelectorAll('input[name="userType"]').forEach(radio => {
-        radio.addEventListener('change', function() {
-            const ownerBenefits = document.getElementById('ownerBenefits');
-            const mechanicBenefits = document.getElementById('mechanicBenefits');
-            const carTypeField = document.getElementById('carTypeField');
-            const businessNameField = document.getElementById('businessNameField');
-            
-            if (this.value === 'car_owner') {
-                ownerBenefits.classList.remove('hidden');
-                mechanicBenefits.classList.add('hidden');
-                carTypeField.style.display = 'block';
-                businessNameField.style.display = 'none';
-            } else {
-                ownerBenefits.classList.add('hidden');
-                mechanicBenefits.classList.remove('hidden');
-                carTypeField.style.display = 'none';
-                businessNameField.style.display = 'block';
-            }
-        });
-    });
 
-    // Form submission handler
-    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Hide form and show success message
-        this.classList.add('hidden');
-        document.getElementById('successMessage').classList.remove('hidden');
-        
-        // Update counter (simulate)
-        const counter = document.getElementById('waitlistCounter');
-        const currentCount = parseInt(counter.querySelector('.text-4xl').textContent.replace(',', ''));
-        counter.querySelector('.text-4xl').textContent = (currentCount + 1).toLocaleString();
-        
-       
-        // fetch('/api/waitlist', { method: 'POST', body: new FormData(this) })
-    });
-
-    // Reset form function
-    function resetForm() {
-        document.getElementById('waitlistForm').classList.remove('hidden');
-        document.getElementById('successMessage').classList.add('hidden');
-        document.getElementById('waitlistForm').reset();
-    }
-</script>
 
 <x-footer />
+
+
 
 @endsection

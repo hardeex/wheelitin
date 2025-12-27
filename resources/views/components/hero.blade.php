@@ -61,7 +61,7 @@
             <!-- Headline -->
             <h1
                 class="font-display font-bold text-[34px] xs:text-[38px] sm:text-[44px] md:text-[50px] lg:text-[56px] xl:text-[60px] leading-[1.1] sm:leading-[1.05] tracking-[0.02em] text-[var(--color-dark-blue)] text-center mb-4 sm:mb-4 md:mb-4 lg:mb-3 px-2 animate-fade-in-down max-w-[95%] sm:max-w-4xl">
-                <span class="block">4th attempt Test auto deployment Book Trusted Local Mechanics In Minutes</span>
+                <span class="block">Book Trusted Local Mechanics In Minutes</span>
                 {{-- <span class="block">Made Easy</span> --}}
             </h1>
 
