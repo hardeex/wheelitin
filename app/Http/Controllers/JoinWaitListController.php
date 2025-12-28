@@ -20,7 +20,7 @@ class JoinWaitListController extends Controller
 
         // Validate the request
         $validator = Validator::make($request->all(), [
-            'userType' => 'required|string|in:user,mechanic',
+            'userType' => 'required|string|in:user,specialist',
             'firstName' => 'nullable|string|max:255',
             'lastName' => 'nullable|string|max:255',
             'email' => 'required|email|max:255',
