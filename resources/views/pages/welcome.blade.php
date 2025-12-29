@@ -3,7 +3,8 @@
 
 @section('content')
 
-<x-hero />
+@include('components.waitlist')
+{{-- <x-hero /> --}}
 <x-mechanic-section />
 <x-how-it-works />
 <x-faq />

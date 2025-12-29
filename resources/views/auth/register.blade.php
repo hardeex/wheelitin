@@ -108,7 +108,8 @@
                                     <label class="relative flex items-center p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 hover:border-sky-blue {{ old('user_type', 'user') == 'user' ? 'border-sky-blue bg-baby-blue/10' : 'border-gray-300 bg-white' }}">
                                         <input type="radio" name="user_type" value="user" 
                                             class="w-4 h-4 text-sky-blue border-gray-300 focus:ring-sky-blue" 
-                                            {{ old('user_type', 'user') == 'user' ? 'checked' : '' }}>
+                                            {{ old('user_type', 'user') == 'user' ? 'checked' : '' }}
+                                            onchange="toggleNameFields()">
                                         <div class="ml-3">
                                             <span class="block text-sm font-bold text-dark-blue">Car Owner</span>
                                             <span class="block text-xs text-dark-blue/60 mt-1">Looking for repair services</span>
@@ -119,31 +120,38 @@
                                     <label class="relative flex items-center p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 hover:border-sky-blue {{ old('user_type') == 'specialist' ? 'border-sky-blue bg-baby-blue/10' : 'border-gray-300 bg-white' }}">
                                         <input type="radio" name="user_type" value="specialist" 
                                             class="w-4 h-4 text-sky-blue border-gray-300 focus:ring-sky-blue"
-                                            {{ old('user_type') == 'specialist' ? 'checked' : '' }}>
+                                            {{ old('user_type') == 'specialist' ? 'checked' : '' }}
+                                            onchange="toggleNameFields()">
                                         <div class="ml-3">
-                                            <span class="block text-sm font-bold text-dark-blue">Mechanic</span>
+                                            <span class="block text-sm font-bold text-dark-blue">Service Provider</span>
                                             <span class="block text-xs text-dark-blue/60 mt-1">Offering repair services</span>
                                         </div>
                                     </label>
                                 </div>
                             </div>
 
-                            <!-- First Name and Last Name -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- First Name and Last Name (For Car Owner) -->
+                            <div id="userNameFields" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label for="first_name" class="block text-sm font-bold text-dark-blue mb-2">First Name</label>
                                     <input type="text" id="first_name" name="first_name" value="{{ old('first_name') }}"
-                                        required
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-sky-blue transition-all duration-200 text-dark-blue"
                                         placeholder="John">
                                 </div>
                                 <div>
                                     <label for="last_name" class="block text-sm font-bold text-dark-blue mb-2">Last Name</label>
                                     <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}"
-                                        required
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-sky-blue transition-all duration-200 text-dark-blue"
                                         placeholder="Doe">
                                 </div>
+                            </div>
+
+                            <!-- Business Name (For Service Provider) -->
+                            <div id="businessNameField" class="hidden">
+                                <label for="business_name" class="block text-sm font-bold text-dark-blue mb-2">Business Name</label>
+                                <input type="text" id="business_name" name="business_name" value="{{ old('business_name') }}"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-sky-blue transition-all duration-200 text-dark-blue"
+                                    placeholder="ABC Auto Repairs Ltd">
                             </div>
 
                             <!-- Email Address -->
@@ -168,7 +176,7 @@
                                     </div>
                                     <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" required
                                         class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-sky-blue transition-all duration-200 text-dark-blue"
-                                        placeholder="44123567">
+                                        placeholder="+44 7000 000000">
                                 </div>
                                 <p class="text-xs text-dark-blue/60 mt-1">Enter your UK phone number</p>
                             </div>
@@ -235,6 +243,30 @@
 
     <!-- JavaScript -->
     <script>
+        // Toggle between name fields based on user type
+        function toggleNameFields() {
+            const userType = document.querySelector('input[name="user_type"]:checked').value;
+            const userNameFields = document.getElementById('userNameFields');
+            const businessNameField = document.getElementById('businessNameField');
+            const firstNameInput = document.getElementById('first_name');
+            const lastNameInput = document.getElementById('last_name');
+            const businessNameInput = document.getElementById('business_name');
+            
+            if (userType === 'specialist') {
+                userNameFields.classList.add('hidden');
+                businessNameField.classList.remove('hidden');
+                firstNameInput.removeAttribute('required');
+                lastNameInput.removeAttribute('required');
+                businessNameInput.setAttribute('required', 'required');
+            } else {
+                userNameFields.classList.remove('hidden');
+                businessNameField.classList.add('hidden');
+                firstNameInput.setAttribute('required', 'required');
+                lastNameInput.setAttribute('required', 'required');
+                businessNameInput.removeAttribute('required');
+            }
+        }
+
         // Toggle password visibility
         function togglePasswordVisibility(fieldId) {
             const field = document.getElementById(fieldId);
@@ -250,6 +282,11 @@
                 icon.classList.add('fa-eye');
             }
         }
+
+        // Initialize the correct fields on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleNameFields();
+        });
     </script>
 
 @endsection

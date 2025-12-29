@@ -85,7 +85,7 @@
                               stroke-width="2" 
                               d="M12 4v16m8-8H4" />
                     </svg>
-                    <span class="font-medium text-sm sm:text-base">Service Provider</span>
+                    <span class="font-medium text-sm sm:text-base">Login</span>
                 </a>
             @endif
 
@@ -196,7 +196,7 @@
                                       stroke-width="2" 
                                       d="M12 4v16m8-8H4" />
                             </svg>
-                            <span class="font-medium">Service Provider</span>
+                            <span class="font-medium">Login</span>
                         </a>
                     @endif
                 </div>
