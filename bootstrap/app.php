@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AdminAuth;
 use App\Http\Middleware\CheckAdminRole;
 use App\Http\Middleware\CheckAuthToken;
 use App\Http\Middleware\CheckSpecialistRole;
@@ -23,6 +24,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'check.specialist' => CheckSpecialistRole::class,
             'check.admin' => CheckAdminRole::class,
             'redirect.auth' => RedirectIfAuthenticated::class,
+            'admin.auth' => AdminAuth::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

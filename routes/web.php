@@ -162,9 +162,15 @@ Route::middleware('check.specialist')
 // ============================================
 // ADMIN ROUTES (Authenticated Admins)
 // ============================================
-Route::middleware('check.admin')
-    ->prefix('admin')
-    ->group(function () {
-        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    });
+# routes/web.php
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [AdminController::class, 'login'])->name('login');
+    Route::post('/login', [AdminController::class, 'loginSubmit'])->name('login.submit');
 
+    Route::middleware('admin.auth')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::get('/waitlist', [AdminController::class, 'waitlist'])->name('waitlist');
+        Route::post('/waitlist/send-message', [AdminController::class, 'sendMessage'])->name('waitlist.send.message');
+        Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
+    });
+});

@@ -293,6 +293,7 @@ public function showVerification()
 
 public function verifyAccount(Request $request)
 {
+    Log::info('The email verification method is called', $request->all());
     // Validate only email
     $validator = Validator::make(
         $request->all(),
