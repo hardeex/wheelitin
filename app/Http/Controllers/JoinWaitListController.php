@@ -24,8 +24,9 @@ class JoinWaitListController extends Controller
             'firstName' => 'nullable|string|max:255',
             'lastName' => 'nullable|string|max:255',
             'email' => 'required|email|max:255',
-            'phoneNumber' => 'required|string|max:20',
-            'address' => 'nullable|string|max:500',             
+            'phoneNumber' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:500',   
+            'businessName' =>'nullable|string|max:500'          
         ]);
 
         if ($validator->fails()) {
@@ -45,6 +46,7 @@ class JoinWaitListController extends Controller
                 'phoneNumber' => $request->phoneNumber,
                 'userType' => $request->userType,
                 'address' => $request->address,
+                'businessName' => $request->businessName
             ];
 
             $apiUrl = config('api.backend_url') . '/waitlist/join';
