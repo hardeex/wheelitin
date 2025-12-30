@@ -154,8 +154,8 @@
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
-                            <p class="text-white/90 group-hover:text-white transition-colors">Zero commission for first 6
-                                months</p>
+                            {{-- <p class="text-white/90 group-hover:text-white transition-colors">Zero commission for first 6
+                                months</p> --}}
                         </div>
                         <div class="flex items-start space-x-3 group">
                             <div
