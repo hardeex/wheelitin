@@ -42,7 +42,7 @@ class AdminController extends Controller
 
         try {
             $loginData = $request->only('email', 'password');
-            $apiUrl = config('api.backend_url') . '/admin/login';
+            $apiUrl = config('api.backend_url') . '/admin/auth/login';
 
             Log::info('Admin login attempt', [
                 'url' => $apiUrl,
