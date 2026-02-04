@@ -65,7 +65,7 @@ class AdminController extends Controller
 
             if ($response->ok() && isset($responseData['access_token'], $responseData['admin'])) {
                 // Store admin session data
-                Session::put('admin_access_token', $responseData['access_token']);
+                Session::put('access_token', $responseData['access_token']);
                 Session::put('admin_refresh_token', $responseData['refresh_token'] ?? null);
                 Session::put('admin', $responseData['admin']);
 
@@ -112,10 +112,10 @@ class AdminController extends Controller
     /**
      * Show admin dashboard
      */
-    public function dashboard()
+    public function dashboard2()
     {
-        $token = Session::get('admin_access_token');
-        $admin = Session::get('admin');
+        $token = Session::get('access_token');
+        $user = Session::get('user');
 
         if (!$token || !$admin) {
             Log::warning('Admin dashboard access without token, redirecting to login.');
@@ -180,100 +180,138 @@ class AdminController extends Controller
         }
     }
 
+
+
+    public function dashboard()
+{
+    $token = Session::get('access_token');
+    $user  = Session::get('user');
+
+    if (!$token || !$user || $user['user_type'] !== 'admin') {
+        Log::warning('Admin dashboard access denied');
+        return redirect()->route('admin.login')
+            ->with('error', 'Please log in to access the dashboard.');
+    }
+
+    $apiUrl = config('api.backend_url') . '/admin/dashboard';
+
+    $response = Http::withToken($token)->get($apiUrl);
+
+    return view('admin.dashboard', [
+        'admin' => $user,
+        'stats' => $response->json()['data'] ?? []
+    ]);
+}
+
+
     /**
      * Get all waitlist entries
      */
-    public function waitlist(Request $request)
-    {
-        $token = Session::get('admin_access_token');
-        $admin = Session::get('admin');
+   public function waitlist(Request $request)
+{
+    $token = Session::get('access_token');
+    $user  = Session::get('user');
 
-        if (!$token || !$admin) {
-            return redirect()->route('admin.login')->with('error', 'Please log in to access waitlist.');
-        }
+    // Basic auth check
+    if (!$token || !$user) {
+        Log::warning('Waitlist access denied: missing session', [
+            'token_exists' => (bool) $token,
+            'user_exists'  => (bool) $user,
+        ]);
 
-        try {
-            $apiUrl = config('api.backend_url') . '/admin/waitlist';
-
-            // Get query parameters for filtering/pagination
-            $queryParams = [
-                'page' => $request->input('page', 1),
-                'per_page' => $request->input('per_page', 20),
-                'userType' => $request->input('userType'),
-                'search' => $request->input('search'),
-            ];
-
-            // Remove null values
-            $queryParams = array_filter($queryParams, function ($value) {
-                return !is_null($value);
-            });
-
-            Log::info('Fetching waitlist data', [
-                'url' => $apiUrl,
-                'params' => $queryParams,
-                'admin_id' => $admin['_id'] ?? 'unknown'
-            ]);
-
-            $response = Http::timeout(15)
-                ->withToken($token)
-                ->withHeaders([
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                ])
-                ->get($apiUrl, $queryParams);
-
-            if ($response->successful()) {
-                $waitlistData = $response->json();
-
-                Log::info('Waitlist data fetched successfully', [
-                    'total' => $waitlistData['data']['total'] ?? 0
-                ]);
-
-                return view('admin.waitlist', [
-                    'admin' => $admin,
-                    'waitlist' => $waitlistData['data'] ?? [],
-                    'filters' => $queryParams
-                ]);
-            }
-
-            // Handle 401 (token expired)
-            if ($response->status() === 401) {
-                Session::flush();
-                return redirect()->route('admin.login')->with('error', 'Your session has expired. Please log in again.');
-            }
-
-            Log::error('Waitlist API error', [
-                'status' => $response->status(),
-                'response' => $response->body()
-            ]);
-
-            return view('admin.waitlist', [
-                'admin' => $admin,
-                'waitlist' => [],
-                'error' => 'Failed to load waitlist data.'
-            ]);
-
-        } catch (\Exception $e) {
-            Log::error('Waitlist fetch exception', [
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
-            ]);
-
-            return view('admin.waitlist', [
-                'admin' => $admin,
-                'waitlist' => [],
-                'error' => 'An error occurred while loading waitlist.'
-            ]);
-        }
+        return redirect()
+            ->route('admin.login')
+            ->with('error', 'Please log in to access waitlist.');
     }
+
+    // Build API URL from config
+    $apiUrl = rtrim(config('api.backend_url'), '/') . '/waitlist/all';
+
+    Log::info('Waitlist request starting', [
+        'api_url' => $apiUrl,
+        'admin_email' => $user['email'] ?? null,
+        'token_preview' => substr($token, 0, 20) . '...',
+    ]);
+
+    try {
+        $response = Http::timeout(30)
+            ->withToken($token)
+            ->acceptJson()
+            ->get($apiUrl);
+
+        // Log raw response details
+        Log::info('Waitlist API response received', [
+            'status' => $response->status(),
+            'headers' => $response->headers(),
+            'body_preview' => substr($response->body(), 0, 500),
+        ]);
+
+        // Handle expired token
+        if ($response->status() === 401) {
+            Log::warning('Waitlist API returned 401 – token expired');
+
+            Session::flush();
+
+            return redirect()
+                ->route('admin.login')
+                ->with('error', 'Session expired. Please log in again.');
+        }
+
+        // Handle non-success
+        if (!$response->successful()) {
+            Log::error('Waitlist API failed', [
+                'status' => $response->status(),
+                'body' => $response->body(),
+            ]);
+
+            return view('admin.waitlist', [
+                'admin' => $user,
+                'waitlist' => [],
+                'count' => 0,
+                'error' => 'Failed to fetch waitlist.',
+            ]);
+        }
+
+        // Decode response
+        $data = $response->json();
+
+        Log::info('Waitlist API decoded successfully', [
+            'success' => $data['success'] ?? null,
+            'count' => $data['count'] ?? null,
+            'items_received' => isset($data['data']) ? count($data['data']) : 0,
+        ]);
+
+        return view('admin.waitlist', [
+            'admin'   => $user,
+            'waitlist'=> $data['data'] ?? [],
+            'count'   => $data['count'] ?? 0,
+        ]);
+
+    } catch (\Throwable $e) {
+        Log::error('Waitlist exception thrown', [
+            'message' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'trace' => $e->getTraceAsString(),
+        ]);
+
+        return view('admin.waitlist', [
+            'admin' => $user,
+            'waitlist' => [],
+            'count' => 0,
+            'error' => 'Unexpected error while loading waitlist.',
+        ]);
+    }
+}
+
 
     /**
      * Send message to waitlisters
      */
     public function sendMessage(Request $request)
     {
-        $token = Session::get('admin_access_token');
-        $admin = Session::get('admin');
+        $token = Session::get('access_token');
+        $user = Session::get('user');
 
         if (!$token || !$admin) {
             return redirect()->route('admin.login')->with('error', 'Please log in first.');
@@ -373,7 +411,7 @@ class AdminController extends Controller
      */
     public function logout()
     {
-        $admin = Session::get('admin');
+        $user = Session::get('user');
 
         Log::info('Admin logging out', [
             'admin_id' => $admin['_id'] ?? 'unknown',
@@ -381,7 +419,7 @@ class AdminController extends Controller
         ]);
 
         // Clear admin session
-        Session::forget(['admin_access_token', 'admin_refresh_token', 'admin']);
+        Session::forget(['access_token', 'admin_refresh_token', 'admin']);
 
         return redirect()->route('admin.login')->with('success', 'You have been logged out successfully.');
     }
