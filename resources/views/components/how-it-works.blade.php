@@ -146,7 +146,7 @@
                 <div class="rounded-[24px] overflow-hidden mb-6" style="background: #FF7A0099;">
                     <div class="aspect-[4/3] flex items-center justify-center p-8 step-image-container">
                         <img 
-                            src="/images/hand-making-call.gif" 
+                            src="/images/car picture.GIF" 
                             alt="Post your request" 
                             class="w-full h-full object-contain"
                         />

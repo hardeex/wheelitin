@@ -10,9 +10,9 @@
             <!-- Left Column - Brand Info -->
             <div>
                 <!-- Logo instead of text -->
-                <h3 class="font-display text-[32px] md:text-[40px] uppercase mb-4">
-                    WHEELITIN
-                </h3>
+                {{-- <h3 class="font-display text-[32px] md:text-[40px] mb-4">
+                    <img src="{{ asset('images/logo.png') }}" alt="Wheel It In" class="w-40 h-auto">
+                </h3> --}}
 
                 <p class="text-[14px] md:text-[16px] leading-relaxed text-gray-300 max-w-md">
                     Wheelitin is revolutionizing the auto repair industry by creating a transparent, customer-first way to find and book trusted mechanics.
@@ -89,7 +89,7 @@
             <img src="/images/logo.png" 
                  alt="Wheel It In" 
                  class="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[700px] h-auto select-none pointer-events-none"
-                 style="opacity: 0.15; filter: brightness(1.5) contrast(0.8);">
+                 style="opacity: 0.15; filter: brightness(2.5) contrast(0.8);">
         </div>
     </div>
 </footer>
